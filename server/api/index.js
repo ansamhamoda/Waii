@@ -1,8 +1,4 @@
+import { createApp } from "../server/src/app.js";
+import { loadConfig } from "../server/src/config.js";
 
-import { loadConfig } from "../src/config.js";
-import { createApp } from "../src/app.js";
-
-const config = loadConfig();
-const app = createApp(config);
-
-export default app;
+export default createApp(loadConfig());
