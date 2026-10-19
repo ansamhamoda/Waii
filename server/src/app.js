@@ -64,7 +64,7 @@ export function createApp(config, { fetchImpl = fetch } = {}) {
         return res.status(400).json({ error: { code: e.code, message: e.message } });
       }
       if (e instanceof LlmError) {
-        console.error(`[waii] LLM error: ${e.kind}${e.status ? " " + e.status : ""}`); // no user content logged
+        console.error([waii] LLM error: ${e.kind}${e.status ? " " + e.status : ""}); // no user content logged
         const [status, code, message] = FRIENDLY[e.kind] || FRIENDLY.upstream;
         return res.status(status).json({ error: { code, message } });
       }
@@ -88,5 +88,7 @@ export function createApp(config, { fetchImpl = fetch } = {}) {
   const vercelApp = createApp(loadConfig());
 
 export default vercelApp;
+  return app;
+}
   return app;
 }
