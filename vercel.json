@@ -1,0 +1,10 @@
+﻿{
+  "buildCommand": "npm --prefix client install --include=dev && npm run build",
+  "outputDirectory": "client/dist",
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api" }
+  ],
+  "functions": {
+    "api/index.js": { "maxDuration": 30 }
+  }
+}
