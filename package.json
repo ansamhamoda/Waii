@@ -1,0 +1,18 @@
+{
+  "name": "waii",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Waii (وعي) - AI breast cancer awareness chatbot for Pink October (educational prototype)",
+  "scripts": {
+    "postinstall": "npm --prefix server install && npm --prefix client install",
+    "dev": "concurrently -n server,client -c magenta,cyan \"npm --prefix server run dev\" \"npm --prefix client run dev\"",
+    "build": "npm --prefix client run build",
+    "start": "npm run build && npm --prefix server start",
+    "test": "npm --prefix server test",
+    "evaluate": "node scripts/evaluate.mjs"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  },
+  "engines": { "node": ">=20" }
+}

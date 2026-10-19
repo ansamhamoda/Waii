@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: waii
+    runtime: node
+    plan: free
+    buildCommand: npm install --include=dev && npm --prefix client install --include=dev && npm run build
+    startCommand: npm --prefix server start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: AI_PROVIDER
+        value: gemini
+      - key: GEMINI_MODEL
+        value: gemini-3.5-flash-lite
+      - key: GEMINI_API_KEY
+        sync: false
