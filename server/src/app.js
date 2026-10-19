@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 import { normaliseMessages, ValidationError } from "./validate.js";
 import { askModel, LlmError } from "./llm.js";
 import { SOURCES } from "./sources.js";
+import { loadConfig } from "./config.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -84,5 +85,8 @@ export function createApp(config, { fetchImpl = fetch } = {}) {
     const status = err.status && err.status < 500 ? err.status : 500;
     res.status(status).json({ error: { code: "bad_request", message: "Invalid request." } });
   });
+  const vercelApp = createApp(loadConfig());
+
+export default vercelApp;
   return app;
 }
